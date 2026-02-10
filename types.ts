@@ -1,4 +1,3 @@
-
 export enum Language {
   SORANI = 'Sorani (Kurdish)',
   ARABIC = 'Arabic',
