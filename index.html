@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zyad Ai Pro - دەرهێنانی دەق</title>
-    <!-- Tailwind CSS CDN -->
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&family=Noto+Kufi+Arabic:wght@100..900&display=swap" rel="stylesheet">
@@ -14,6 +14,15 @@
         background-color: #f8fafc;
       }
     </style>
+    <!-- سکریپتی دۆزینەوەی هەڵە (Error Catcher) -->
+    <script>
+      window.addEventListener('error', function(event) {
+        const errorDiv = document.createElement('div');
+        errorDiv.style.cssText = 'background-color: #fee2e2; color: #991b1b; padding: 20px; margin: 20px; border-radius: 10px; border: 1px solid #ef4444; direction: ltr; text-align: left; font-family: monospace; z-index: 99999; position: absolute; top: 0; left: 0; right: 0;';
+        errorDiv.innerHTML = '<h3 style="font-weight: bold; margin-bottom: 10px;">⚠️ هەڵەیەک ڕوویدا لە کۆدەکان:</h3><p><strong>Message:</strong> ' + event.message + '</p><p><strong>File:</strong> ' + event.filename + ':' + event.lineno + '</p>';
+        document.body.prepend(errorDiv);
+      });
+    </script>
   <script type="importmap">
 {
   "imports": {
@@ -26,11 +35,20 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
 </head>
   <body>
-    <div id="root"></div>
-    <!-- ربط ملف React الرئيسي بواسطة Vite -->
-    <script type="module" src="/index.tsx"></script>
+    <div id="root">
+      <!-- ئەم بەشە دەردەکەوێت پێش ئەوەی سایتەکە بە تەواوی بارببێت -->
+      <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh; gap: 20px;">
+        <svg class="animate-spin h-10 w-10 text-indigo-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        <h2 class="text-xl font-bold text-indigo-900">لە بارکردندایە...</h2>
+        <p class="text-slate-500 text-sm text-center max-w-md">ئەگەر ئەم شاشەیە نەگۆڕدرا، کێشەیەک هەیە لە فایلەکان.<br/><br/>تکایە دڵنیابە کە فایلەکەت تەنها Double-Click نەکردووە بۆ کردنەوەی، بەڵکو دەبێت لە ڕێگەی (سێرڤەر)ەوە یان لەسەر جێت هەب بکرێتەوە.</p>
+      </div>
+    </div>
+    <!-- بەکارهێنانی پاتی ڕێژەیی ./ بۆ گونجان لەگەڵ Vite -->
+    <script type="module" src="./index.tsx"></script>
   </body>
 </html>
